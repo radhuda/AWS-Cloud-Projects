@@ -3,6 +3,12 @@ import boto3
 import gzip
 from io import BytesIO
 
+''' 
+This script reads in events when any files touches the s3 bucket. If that file has .gzip extension
+then lambda automatically grabs the file using boto3. Itextracts the file via gzip and deletes the .gzip file again using boto3.
+
+'''
+
 
 def lambda_handler(event, context):
     bucket = event[“Records”][0][‘s3’][‘bucket’][‘name’]
